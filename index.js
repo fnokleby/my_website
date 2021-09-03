@@ -6,6 +6,9 @@ const si = require('systeminformation');
 const fs = require('fs');
 
 var cpuTemp;
+var memUsage;
+
+var memUsed;
 
 app.get('/', function (req, res) {
 
@@ -13,9 +16,19 @@ app.get('/', function (req, res) {
         cpuTemp = data;
 
         console.log(cpuTemp)
-      });
+    });
 
-    res.render('index', { title: 'Hey', cpu_temp_main: cpuTemp.main, core_temps: cpuTemp.cores  });
+    si.mem(function(data) {
+        memUsage = data;
+
+        memUsed = (parseInt(JSON.stringify(memUsage.used)) / 1073741824).toFixed(1)
+        console.log(memUsed) //Divided by 1073741824
+    });
+
+    // si.mem().then(data => console.log(data));
+
+
+    res.render('index', { title: 'Hey', cpu_temp_main: cpuTemp.main, core_temps: cpuTemp.cores, memUsed:memUsed, memFree: memUsage.free  });
     console.log('Someone connected!');
     // si.cpuTemperature().then(data => { return data})
     
