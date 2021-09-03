@@ -1,0 +1,1 @@
+{"main":16.8,"cores":[16.8],"max":16.8,"socket":[],"chipset":null}
