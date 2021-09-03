@@ -15,7 +15,7 @@ app.get('/', function (req, res) {
         console.log(cpuTemp)
       });
 
-    res.render('index', { title: 'Hey', cpu_temp: cpuTemp.main});
+    res.render('index', { title: 'Hey', cpu_temp_main: cpuTemp.main, core_temps: cpuTemp.cores  });
     console.log('Someone connected!');
     // si.cpuTemperature().then(data => { return data})
     
