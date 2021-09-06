@@ -28,7 +28,7 @@ app.get('/', function (req, res) {
     // si.mem().then(data => console.log(data));
 
 
-    res.render('index', { title: 'Hey', cpu_temp_main: cpuTemp.main, core_temps: cpuTemp.cores, memUsed:memUsed, memFree: memUsage.free  });
+    res.render('index', { title: memUsed + 'GB - ' + cpuTemp.main + ' Grader', cpu_temp_main: cpuTemp.main, core_temps: cpuTemp.cores, memUsed:memUsed, memFree: memUsage.free  });
     console.log('Someone connected!');
     // si.cpuTemperature().then(data => { return data})
     
